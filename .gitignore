@@ -11,3 +11,5 @@ cdk.out
 aws/credentials
 awscliv2.zip
 *.env
+aws/
+*.zip
