@@ -1,14 +1,44 @@
-# Welcome to your CDK TypeScript project
+# AWS CDK Multi-Environment Platform
 
-This is a blank project for CDK development with TypeScript.
+TypeScript AWS CDK reference architecture for deploying isolated development and production
+stacks through one reusable infrastructure codebase.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## What It Demonstrates
 
-## Useful commands
+- Environment-aware AWS CDK stacks
+- Lambda, VPC, and S3 infrastructure composition
+- Reusable constructs and configuration boundaries
+- CloudFormation synthesis without committing generated assets
+- Node.js 24 CI for build, tests, and `cdk synth`
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+## Validate
+
+```bash
+npm ci
+npm run build
+npm test -- --runInBand
+npx cdk synth
+```
+
+## Deploy
+
+Authenticate to an AWS sandbox account and use the CDK context/configuration defined by the
+application:
+
+```bash
+npx cdk diff
+npx cdk deploy
+```
+
+Do not commit AWS credentials, generated `cdk.out` assets, deployment packages, or account
+secrets.
+
+## Portfolio Status
+
+This repository is an infrastructure reference sample. It should be reviewed and adapted for
+an organisation's networking, IAM, encryption, logging, tagging, and cost-control standards
+before production deployment.
+
+## License
+
+MIT
